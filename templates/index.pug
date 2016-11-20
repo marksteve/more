@@ -2,8 +2,16 @@ doctype html
 html
   head
     meta(charset="utf-8")
-    style.
-      body { font: 16px/1.5 sans-serif; text-align: center; }
-    title Instablog
+    link(href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet")
+    link(href="/css/app.css" rel="stylesheet")
+    title More
   body
-    h1 Instablog
+    main
+      section
+        h1 More
+        p Share more of your memories
+        p
+          a(href=@ig_login_url class="btn") Login
+    script(src="https://cdn.polyfill.io/v2/polyfill.min.js?features=blissfuljs")
+    script(src="/js/bliss.min.js")
+    script(src="/js/app.js")

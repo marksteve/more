@@ -1,8 +1,8 @@
-defmodule Instablog.Mixfile do
+defmodule More.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :instablog,
+    [app: :more,
      version: "0.1.0",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
@@ -15,8 +15,8 @@ defmodule Instablog.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     dev_apps = Mix.env == :dev && [:exsync] || []
-    [applications: dev_apps ++ [:logger, :cowboy, :plug, :httpoison],
-     mod: {Instablog, []}]
+    [applications: dev_apps ++ [:logger, :cowboy, :plug, :httpoison, :postgrex],
+     mod: {More, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -34,6 +34,8 @@ defmodule Instablog.Mixfile do
      {:expug, "~> 0.7"},
      {:poison, "~> 2.2"},
      {:httpoison, "~> 0.9"},
+     {:postgrex, "~> 0.12"},
+     {:ecto, "~> 2.0.5"},
      {:exsync, "~> 0.1", only: :dev}]
   end
 end

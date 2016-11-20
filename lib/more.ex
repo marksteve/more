@@ -1,4 +1,4 @@
-defmodule Instablog do
+defmodule More do
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
@@ -8,16 +8,17 @@ defmodule Instablog do
 
     # Define workers and child supervisors to be supervised
     children = [
-      # Starts a worker by calling: Instablog.Worker.start_link(arg1, arg2, arg3)
-      # worker(Instablog.Worker, [arg1, arg2, arg3]),
-      Plug.Adapters.Cowboy.child_spec(:http, Instablog.Router, [], [
+      # Starts a worker by calling: More.Worker.start_link(arg1, arg2, arg3)
+      # worker(More.Worker, [arg1, arg2, arg3]),
+      supervisor(More.Repo, []),
+      Plug.Adapters.Cowboy.child_spec(:http, More.Router, [], [
         port: (System.get_env("PORT") || "4001") |> String.to_integer()
       ])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Instablog.Supervisor]
+    opts = [strategy: :one_for_one, name: More.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

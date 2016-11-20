@@ -28,10 +28,12 @@ a {
 
 .btn {
   border: 1px solid;
+  line-height: 2;
 
   padding: 0 1rem;
 
   box-sizing: border-box;
+  display: inline-block;
 }
 
 main {
@@ -47,4 +49,18 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.media {
+  min-height: 100vh;
+
+  margin-left: -50vw;
+  position: relative;
+}
+
+.media > img {
+  max-width: 40vw;
+  position: absolute;
+  top: 1.5rem;
+  right: calc(50vw + 1.5rem);
 }

@@ -8,10 +8,16 @@ html
   body
     main
       section
-        h1 More
-        p Share more of your memories
-        p
-          a(href=@ig_login_url class="btn") Login
+        = if @current_user do
+          h2= @current_user.user_name
+          = for m <- @recent_media do
+            div.media
+              img(src=m["images"]["standard_resolution"]["url"])
+        - else
+          h1 More
+          p Share more of your memories
+          p
+            a(href=@ig_login_url class="btn") Login
     script(src="https://cdn.polyfill.io/v2/polyfill.min.js?features=blissfuljs")
     script(src="/js/bliss.min.js")
     script(src="/js/app.js")

@@ -7,13 +7,24 @@ html
     title More
   body
     main
-      section
-        = if @current_user do
+      = if @current_user do
+        header
           h2= @current_user.user_name
-          = for m <- @recent_media do
-            div.media
-              img(src=m["images"]["standard_resolution"]["url"])
-        - else
+          p
+            a(href="/logout" class="btn") Logout
+        = for m <- @recent_media do
+          .media
+            img(src=m["images"]["standard_resolution"]["url"])
+            .media-post
+              p
+                input(type="text" class="field -large" placeholder="Title")
+              p
+                textarea(class="field" rows="10" placeholder="Content")
+              p
+                button(class="btn") Save
+                button(class="btn") Publish
+      - else
+        section
           h1 More
           p Share more of your memories
           p

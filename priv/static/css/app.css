@@ -1,7 +1,11 @@
 body {
-  font: 20px/1.5 Dosis, sans-serif;
-
   margin: 0;
+}
+
+body, input, textarea, button {
+  font: 16px/1.5 Dosis, sans-serif;
+
+  color: #333;
 }
 
 h1, h2, h3, h4, h5, p, ol, ul {
@@ -19,16 +23,20 @@ h1 {
   text-indent: -1000rem;
 
   background: url(/images/more.svg) no-repeat left center;
-  background-size: 10rem;
+  background-size: 9rem;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .btn {
-  border: 1px solid;
   line-height: 2;
+
+  background: white;
+  border: 1px solid;
+  box-shadow: .2em .2em 0 currentColor;
 
   padding: 0 1rem;
 
@@ -36,31 +44,87 @@ a {
   display: inline-block;
 }
 
-main {
-  margin-left: 50vw;
-  width: 50vw;
+.btn:hover {
+  background: #333;
+  color: white;
+
+  cursor: pointer;
+}
+
+input.field {
+  border: 1px solid transparent;
+  border-bottom: 1px solid;
+  line-height: 2;
+
+  width: 100%;
+  padding: 0 1rem;
 
   box-sizing: border-box;
+  display: block;
+}
+
+textarea.field {
+  border: 1px solid;
+  line-height: 2;
+
+  width: 100%;
+  padding: 0 1rem;
+
+  box-sizing: border-box;
+  display: block;
+}
+
+.btn:focus, .field:focus {
+  outline: .2em solid gold;
+}
+
+main {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header {
+  width: 100vw;
+  padding: 1.5rem 3rem;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 section {
   min-height: 100vh;
+  box-sizing: border-box;
 
-  display: flex;
   flex-direction: column;
   justify-content: center;
+  display: flex;
 }
 
 .media {
-  min-height: 100vh;
+  width: 25vw;
+  margin: 1.5rem;
 
-  margin-left: -50vw;
-  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .media > img {
-  max-width: 40vw;
-  position: absolute;
-  top: 1.5rem;
-  right: calc(50vw + 1.5rem);
+  max-width: 25vw;
+  max-height: 25vw;
+}
+
+.media > img:hover {
+  cursor: pointer;
+  outline: .2em solid gold;
+}
+
+.media-post {
+  display: none;
 }

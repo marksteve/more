@@ -51,7 +51,7 @@ defmodule More.Router do
     |> get_session(:current_user)
     bindings = [assigns: [
       ig_login_url: conn |> Instagram.get_authorize_url,
-      current_user: current_user |> IO.inspect,
+      current_user: current_user,
       recent_media: current_user && current_user.ig_access_token |> Instagram.recent_media
     ]]
     conn
@@ -82,6 +82,13 @@ defmodule More.Router do
         conn
         |> send_resp(500, "Oops!")
     end
+  end
+
+  get "/logout" do
+    conn
+    |> fetch_session
+    |> delete_session(:current_user)
+    |> redirect("/")
   end
 
   match _ do
